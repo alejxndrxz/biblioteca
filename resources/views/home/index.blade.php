@@ -1,5 +1,6 @@
 @extends('layout.admin')
-
+ 
+@section('content')
       <!-- Content -->
       <main class="flex-1">
         <section class="px-4 sm:px-6 lg:px-8 py-6">
@@ -189,3 +190,4 @@
           </section>
         </section>
       </main>
+@endsection

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login / Registro | Biblioteca</title>
+  <title>Administracion de Biblioteca</title>
   <!-- Tailwind CDN (para que lo puedas pegar y ver rápido) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Styles / Scripts -->
@@ -17,16 +18,6 @@
 <!--Font Awesome PARA iconos -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biblioteca Admin</title>
-
-  <!-- Tailwind CSS (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     /* Evita salto de layout al abrir/cerrar el menú */
     body { overflow-x: hidden; }
@@ -34,8 +25,6 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800">
-
-
 
   <!-- App Layout -->
   <div class="min-h-screen flex">
