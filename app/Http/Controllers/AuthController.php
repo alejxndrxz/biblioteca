@@ -12,12 +12,6 @@ public function loginForm()
     return view ('auth.login');
 }
 
-public function registerForm()
-{
-    return view ('auth.register');
-}
-
-
 public function register ()
 {
 # Validar los datos de registro
@@ -25,6 +19,7 @@ $validatedData = request()->validate([
 'name' => 'required|string|max:255',
 'email' => 'required|string|email|max:255|unique:users',
 'password' => 'required|string|min:8|confirmed',
+'passwiord_confirmation' => 'required|string|min:8',
 ]);
 
 # Crear el usuario
@@ -36,41 +31,25 @@ $user = \App\Models\User::create([
 
 # Redirigir o iniciar sesión automáticamente
 auth()->login($user);
-return redirect('/')->with('success', 'Cuenta creada exitosamente');
+return redirect('/')->route('home');
 
 }
 
-public function login(Request $request)
+public function login()
 {
-    // Validar las credenciales
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+# Validar los datos de inicio de sesión
+$credentials = request()->validate([
+'email' => 'required|string|email',
+'password' => 'required|string',
+]);
 
-    // Intentar autenticar
-    if (auth()->attempt($credentials)) {
-        // Regenerar la sesión para prevenir session fixation
-        $request->session()->regenerate();
-
-        // Redirigir al home
-        return redirect('/')->with('success', 'Bienvenido de vuelta!');
-    }
-
-    // Si falla, devolver con error
-    return back()->withErrors([
-        'email' => 'Las credenciales no coinciden con nuestros registros.',
-    ])->onlyInput('email');
-}
-
-public function logout(Request $request)
-{
-    auth()->logout();
-    
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-    
-    return redirect('/')->with('success', 'Sesión cerrada correctamente');
+# Intentar iniciar sesión
+if (auth()->attempt($credentials)) {
+    return redirect()->route('home');                    
+} 
+return back()->withErrors([
+    'email' => 'Las credenciales no son correctas.',
+]);
 }
 }
 

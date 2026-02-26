@@ -38,7 +38,7 @@
             </div>
             <p class="mt-2 text-sm text-gray-600">Ingresa con tu correo y contraseña.</p>
 
-            <form id="login" action="{{ route('login.store') }}" method="POST">
+            <form id="loginForm" action="{{ route('login') }}" method="POST">
               @csrf
               <!-- Email -->
               <div class="space-y-2">
@@ -126,7 +126,7 @@
             </div>
             <p class="mt-2 text-sm text-gray-600">Completa tus datos para registrarte.</p>
 
-    <form id="registerForm"  action="{{ route('register.store') }}" method="POST">
+    <form id="registerForm"  action="{{ route('register') }}" method="POST">
         @csrf
               <!-- Nombre -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

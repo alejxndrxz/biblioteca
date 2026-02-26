@@ -17,13 +17,185 @@
 <!--Font Awesome PARA iconos -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Admin</title>
 
-</style>
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <style>
+    /* Evita salto de layout al abrir/cerrar el menú */
+    body { overflow-x: hidden; }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-yellow-100 font-sans antialiased flex flex-col">
 
-@yield('content')
+<body class="bg-slate-50 text-slate-800">
 
-@include('partials.auth.footer')
+
+
+  <!-- App Layout -->
+  <div class="min-h-screen flex">
+
+    <!-- Sidebar (oculta en móvil) -->
+    <aside id="sidebar"
+      class="hidden lg:flex lg:flex-col w-72 bg-slate-900 text-white border-r border-white/10">
+      <!-- Branding -->
+      <div class="px-6 py-5 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-blue-500/20 border border-blue-500/30 grid place-items-center">
+            <!-- icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-200" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2H7a1 1 0 0 1 0-2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6Zm1 5a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h9a1 1 0 1 0 0-2H8Z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold leading-tight">Biblioteca Admin</p>
+            <p class="text-xs text-white/60">Panel de administración</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <nav class="px-3 py-4 flex-1">
+        <p class="px-3 text-[11px] tracking-wider text-white/50 uppercase mb-3">Menú</p>
+
+        <ul class="space-y-1">
+          <li>
+            <a href="#inicio"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
+              <span class="opacity-90">🏠</span>
+              <span class="font-medium">Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="#libros"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl bg-blue-500/20 border border-blue-500/20">
+              <span class="opacity-90">📚</span>
+              <span class="font-medium">Libros</span>
+            </a>
+          </li>
+          <li>
+            <a href="#prestamos"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
+              <span class="opacity-90">🔁</span>
+              <span class="font-medium">Préstamos</span>
+            </a>
+          </li>
+          <li class="pt-2">
+            <a href="#salir"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-500/15 hover:border-red-500/20 border border-transparent transition">
+              <span class="opacity-90">🚪</span>
+              <span class="font-medium">Salir</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer/User -->
+      <div class="p-4 border-t border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-white/15 grid place-items-center font-semibold">A</div>
+          <div class="min-w-0">
+            <p class="text-sm font-semibold truncate">Administrador</p>
+            <p class="text-xs text-white/60 truncate">admin@biblioteca.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/40 hidden lg:hidden z-40"></div>
+
+    <!-- Mobile Sidebar Drawer -->
+    <aside id="drawer"
+      class="fixed inset-y-0 left-0 w-72 bg-slate-900 text-white border-r border-white/10
+             -translate-x-full transition-transform duration-200 lg:hidden z-50">
+      <div class="px-6 py-5 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-blue-500/20 border border-blue-500/30 grid place-items-center">
+            <span class="text-blue-200">📘</span>
+          </div>
+          <div>
+            <p class="font-semibold leading-tight">Biblioteca Admin</p>
+            <p class="text-xs text-white/60">Panel de administración</p>
+          </div>
+        </div>
+        <button id="closeDrawer"
+          class="p-2 rounded-lg hover:bg-white/10 transition"
+          aria-label="Cerrar menú">
+          ✕
+        </button>
+      </div>
+
+      <nav class="px-3 py-4">
+        <p class="px-3 text-[11px] tracking-wider text-white/50 uppercase mb-3">Menú</p>
+        <ul class="space-y-1">
+          <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#inicio">🏠 Inicio</a></li>
+          <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#libros">📚 Libros</a></li>
+          <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#prestamos">🔁 Préstamos</a></li>
+          <li class="pt-2"><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-500/15 transition" href="#salir">🚪 Salir</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Header -->
+      <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+        <div class="px-4 sm:px-6 lg:px-8">
+          <div class="h-16 flex items-center justify-between gap-4">
+            <!-- Left: mobile hamburger + brand -->
+            <div class="flex items-center gap-3">
+              <button id="openDrawer"
+                class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 hover:bg-slate-100 transition"
+                aria-label="Abrir menú">
+                <!-- hamburger -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5A1 1 0 0 1 4 6Zm0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm1 5a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5Z"/>
+                </svg>
+              </button>
+
+              <div class="flex items-center gap-2">
+                <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center">
+                  📚
+                </div>
+                <div class="leading-tight">
+                  <p class="font-semibold">Biblioteca Admin</p>
+                  <p class="text-xs text-slate-500 hidden sm:block">Sistema de gestión bibliotecaria</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center: header menu -->
+            <nav class="hidden md:flex items-center gap-2">
+              <a href="#inicio" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Inicio</a>
+              <a href="#usuarios" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Usuarios</a>
+              <a href="#libros" class="px-3 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Libros</a>
+              <a href="#prestamos" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Préstamos</a>
+              <a href="#salir" class="px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition">Salir</a>
+            </nav>
+
+            <!-- Right actions -->
+            <div class="flex items-center gap-2">
+              <button class="h-10 w-10 rounded-xl border border-slate-200 hover:bg-slate-100 transition" aria-label="Notificaciones">
+                🔔
+              </button>
+              <button class="h-10 w-10 rounded-xl border border-slate-200 hover:bg-slate-100 transition" aria-label="Ajustes">
+                ⚙️
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      @yield('content')
+
+@include('partials.admin.footer')
+
+
+
