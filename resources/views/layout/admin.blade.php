@@ -68,6 +68,13 @@
             </a>
           </li>
           <li>
+            <a href="{{route('categorias.index')}}"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl bg-blue-500/20 border border-blue-500/20">
+              <i class="fas fa-tag mr-3 w-6 text-center"></i>
+              <span class="font-medium">Categorias</span>
+            </a>
+          </li>
+          <li>
             <a href="#prestamos"
               class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
               <span class="opacity-90">🔁</span>
@@ -124,6 +131,7 @@
         <p class="px-3 text-[11px] tracking-wider text-white/50 uppercase mb-3">Menú</p>
         <ul class="space-y-1">
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#inicio">🏠 Inicio</a></li>
+          <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#categorias">🏷️ Categorías</a></li>
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#libros">📚 Libros</a></li>
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#prestamos">🔁 Préstamos</a></li>
           <li class="pt-2"><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-500/15 transition" href="#salir">🚪 Salir</a></li>
@@ -164,6 +172,7 @@
             <nav class="hidden md:flex items-center gap-2">
               <a href="#inicio" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Inicio</a>
               <a href="#usuarios" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Usuarios</a>
+              <a href="#categorias" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Categorías</a>
               <a href="#libros" class="px-3 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Libros</a>
               <a href="#prestamos" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Préstamos</a>
               <a href="#salir" class="px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition">Salir</a>

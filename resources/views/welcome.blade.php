@@ -13,7 +13,6 @@
 
         <!-- Styles / Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
-        @vite(['resources/js/app.js'])
         
 <style>
         /* Transición suave para el menú hamburguesa */
@@ -53,13 +52,10 @@
                     
                     @auth
                         <span class="text-gray-700 font-medium">Hola, {{ auth()->user()->name }}</span>
-                        <form action="{{ route('logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition flex items-center space-x-1">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>Salir</span>
-                            </button>
-                        </form>
+                        <a href="{{ route('logout') }}" class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition flex items-center space-x-1">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Salir</span>
+                        </a>
                     @else
                         <a href="{{ route('login') }}" class="bg-amber-600 text-white px-5 py-2 rounded-full hover:bg-amber-700 transition flex items-center space-x-1">
                             <i class="fas fa-sign-in-alt"></i>
@@ -86,13 +82,10 @@
                         <div class="text-gray-700 py-2 px-3 font-medium">
                             <i class="fas fa-user mr-3"></i> Hola, {{ auth()->user()->name }}
                         </div>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="bg-red-600 text-white py-3 px-3 rounded-md flex items-center justify-center space-x-2 mt-2 w-full">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>Cerrar sesión</span>
-                            </button>
-                        </form>
+                        <a href="{{ route('logout') }}" class="bg-red-600 text-white py-3 px-3 rounded-md flex items-center justify-center space-x-2 mt-2 w-full">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar sesión</span>
+                        </a>
                     @else
                         <a href="{{ route('login') }}" class="bg-amber-600 text-white py-3 px-3 rounded-md flex items-center justify-center space-x-2 mt-2">
                             <i class="fas fa-sign-in-alt"></i>
