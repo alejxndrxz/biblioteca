@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Administracion de Biblioteca</title>
+  <title>Administracion de  Biblioteca</title>
   <!-- Tailwind CDN (para que lo puedas pegar y ver rápido) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Styles / Scripts -->
@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="pt-2">
-            <a href="#salir"
+            <a href="{{route('logout')}}"
               class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-500/15 hover:border-red-500/20 border border-transparent transition">
               <span class="opacity-90">🚪</span>
               <span class="font-medium">Salir</span>

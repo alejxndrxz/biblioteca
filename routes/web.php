@@ -11,4 +11,8 @@ Route::get('/', function () {
 Route::get('/login',[AuthController::class,'loginForm'])->name('login');
 Route::post('/login',[AuthController::class,'login'])->name('login.store');
 Route::post('/register',[AuthController::class,'register'])->name('register');
+#agrupa rutas con auth
+Route::middleware('auth')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
