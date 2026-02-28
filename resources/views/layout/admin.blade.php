@@ -54,22 +54,22 @@
 
         <ul class="space-y-1">
           <li>
-            <a href="#inicio"
-              class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
+            <a href="{{ route('home') }}"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl {{ request()->routeIs('home') ? 'bg-blue-500/20 border border-blue-500/20' : 'hover:bg-white/10' }} transition">
               <span class="opacity-90">🏠</span>
               <span class="font-medium">Inicio</span>
             </a>
           </li>
           <li>
             <a href="#libros"
-              class="flex items-center gap-3 px-3 py-2 rounded-xl bg-blue-500/20 border border-blue-500/20">
+              class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
               <span class="opacity-90">📚</span>
               <span class="font-medium">Libros</span>
             </a>
           </li>
           <li>
             <a href="{{route('categorias.index')}}"
-              class="flex items-center gap-3 px-3 py-2 rounded-xl bg-blue-500/20 border border-blue-500/20">
+              class="flex items-center gap-3 px-3 py-2 rounded-xl {{ request()->routeIs('categorias.*') ? 'bg-blue-500/20 border border-blue-500/20' : 'hover:bg-white/10' }} transition">
               <i class="fas fa-tag mr-3 w-6 text-center"></i>
               <span class="font-medium">Categorias</span>
             </a>
@@ -140,7 +140,7 @@
     </aside>
 
     <!-- Main content -->
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 min-h-screen">
 
       <!-- Header -->
       <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
@@ -170,12 +170,12 @@
 
             <!-- Center: header menu -->
             <nav class="hidden md:flex items-center gap-2">
-              <a href="#inicio" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Inicio</a>
+              <a href="{{ route('home') }}" class="px-3 py-2 rounded-xl text-sm font-medium {{ request()->routeIs('home') ? 'bg-blue-600 text-white hover:bg-blue-700' : 'text-slate-700 hover:bg-slate-100' }} transition">Inicio</a>
               <a href="#usuarios" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Usuarios</a>
-              <a href="#categorias" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Categorías</a>
-              <a href="#libros" class="px-3 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Libros</a>
+              <a href="{{ route('categorias.index') }}" class="px-3 py-2 rounded-xl text-sm font-medium {{ request()->routeIs('categorias.*') ? 'bg-blue-600 text-white hover:bg-blue-700' : 'text-slate-700 hover:bg-slate-100' }} transition">Categorías</a>
+              <a href="#libros" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Libros</a>
               <a href="#prestamos" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Préstamos</a>
-              <a href="#salir" class="px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition">Salir</a>
+              <a href="{{ route('logout') }}" class="px-3 py-2 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition">Salir</a>
             </nav>
 
             <!-- Right actions -->

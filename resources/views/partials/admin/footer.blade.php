@@ -1,6 +1,6 @@
 
       <!-- Footer -->
-      <footer class="bg-white border-t border-slate-200">
+      <footer class="mt-auto bg-white border-t border-slate-200 sticky bottom-0">
         <div class="px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <p class="text-sm text-slate-500">© 2026 Sistema de Administración de Biblioteca. Todos los derechos reservados.</p>
           <nav class="flex gap-4 text-sm">
