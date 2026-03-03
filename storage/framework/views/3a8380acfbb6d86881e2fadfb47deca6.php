@@ -90,11 +90,11 @@
                   <span class="absolute right-3 top-2.5 text-slate-400 text-sm">⌕</span>
                 </div>
 
-                <button
+                <a href="<?php echo e(route('libros.create')); ?>"
                   class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition">
                   <span class="text-lg leading-none">+</span>
                   Agregar libro
-                </button>
+              </a>
               </div>
             </header>
 
@@ -110,14 +110,17 @@
                     <th class="px-4 sm:px-6 py-3">Acciones</th>
                   </tr>
                 </thead>
+
                 <tbody class="divide-y divide-slate-200">
+                  <?php $__currentLoopData = $libros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $libro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr class="hover:bg-slate-50/80 transition">
-                    <td class="px-4 sm:px-6 py-4 font-medium text-slate-900">Cien años de soledad</td>
-                    <td class="px-4 sm:px-6 py-4">Gabriel García Márquez</td>
-                    <td class="px-4 sm:px-6 py-4">978-0307474728</td>
+                    <td class="px-4 sm:px-6 py-4 font-medium text-slate-900"><?php echo e($libro->nombre); ?></td>
+                    <td class="px-4 sm:px-6 py-4"><?php echo e($libro->autor); ?></td>
+                    <td class="px-4 sm:px-6 py-4"><?php echo e($libro->isbn); ?></td>
                     <td class="px-4 sm:px-6 py-4">
                       <span class="inline-flex items-center rounded-full bg-blue-600/10 text-blue-700 px-3 py-1 text-xs font-semibold">
-                        Literatura
+                        <?php echo e($libro->categoria->nombre ?? 'Sin categoría'); ?>
+
                       </span>
                     </td>
                     <td class="px-4 sm:px-6 py-4">
@@ -126,54 +129,14 @@
                       </span>
                     </td>
                     <td class="px-4 sm:px-6 py-4">
-                      <a href="#" class="text-blue-700 font-semibold hover:underline">Editar</a>
-                      <a href="#" class="text-rose-600 font-semibold hover:underline ml-3">Eliminar</a>
+                      <a href="<?php echo e(route('libros.edit', $libro->id)); ?>" class="text-blue-700 font-semibold hover:underline">Editar</a>
+                      <a href="<?php echo e(route('libros.destroy', $libro->id)); ?>" class="text-rose-600 font-semibold hover:underline ml-3">Eliminar</a>
                     </td>
                   </tr>
-
-                  <tr class="hover:bg-slate-50/80 transition">
-                    <td class="px-4 sm:px-6 py-4 font-medium text-slate-900">1984</td>
-                    <td class="px-4 sm:px-6 py-4">George Orwell</td>
-                    <td class="px-4 sm:px-6 py-4">978-0451524935</td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <span class="inline-flex items-center rounded-full bg-purple-600/10 text-purple-700 px-3 py-1 text-xs font-semibold">
-                        Ciencia Ficción
-                      </span>
-                    </td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <span class="inline-flex items-center rounded-full bg-rose-600/10 text-rose-700 px-3 py-1 text-xs font-semibold">
-                        Prestado
-                      </span>
-                    </td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <a href="#" class="text-blue-700 font-semibold hover:underline">Editar</a>
-                      <a href="#" class="text-rose-600 font-semibold hover:underline ml-3">Eliminar</a>
-                    </td>
-                  </tr>
-
-                  <tr class="hover:bg-slate-50/80 transition">
-                    <td class="px-4 sm:px-6 py-4 font-medium text-slate-900">Don Quijote de la Mancha</td>
-                    <td class="px-4 sm:px-6 py-4">Miguel de Cervantes</td>
-                    <td class="px-4 sm:px-6 py-4">978-8420732855</td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <span class="inline-flex items-center rounded-full bg-blue-600/10 text-blue-700 px-3 py-1 text-xs font-semibold">
-                        Literatura
-                      </span>
-                    </td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <span class="inline-flex items-center rounded-full bg-emerald-600/10 text-emerald-700 px-3 py-1 text-xs font-semibold">
-                        Disponible
-                      </span>
-                    </td>
-                    <td class="px-4 sm:px-6 py-4">
-                      <a href="#" class="text-blue-700 font-semibold hover:underline">Editar</a>
-                      <a href="#" class="text-rose-600 font-semibold hover:underline ml-3">Eliminar</a>
-                    </td>
-                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
               </table>
-            </div>
-
+            </div>  
             <!-- Pagination -->
             <footer class="p-4 sm:px-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <p class="text-sm text-slate-500">Mostrando 1 a 3 de 1,247 resultados</p>
