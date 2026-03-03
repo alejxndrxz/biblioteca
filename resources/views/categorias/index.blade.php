@@ -40,8 +40,7 @@
               </a>
               
               <!-- Botón Eliminar -->
-              <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" class="inline" 
-                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+              <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" class="inline">
                 @csrf
                 @method('DELETE')
                 <button type="submit" 

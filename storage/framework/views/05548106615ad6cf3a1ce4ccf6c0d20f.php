@@ -41,8 +41,7 @@
               </a>
               
               <!-- Botón Eliminar -->
-              <form action="<?php echo e(route('categorias.destroy', $categoria->id)); ?>" method="POST" class="inline" 
-                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+              <form action="<?php echo e(route('categorias.destroy', $categoria->id)); ?>" method="POST" class="inline">
                 <?php echo csrf_field(); ?>
                 <?php echo method_field('DELETE'); ?>
                 <button type="submit" 

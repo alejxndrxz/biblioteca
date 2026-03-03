@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); 
 
+# Rutas para categorías
 Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias.index');
 Route::get('/categorias/create', [CategoriasController::class, 'create'])->name('categorias.create');
 Route::post('/categorias/store', [CategoriasController::class, 'store'])->name('categorias.store');
