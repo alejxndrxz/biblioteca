@@ -138,7 +138,7 @@
           Mostrando {{ $libros->firstItem() ?? 0 }} a {{ $libros->lastItem() ?? 0 }} de {{ $libros->total() }} resultados
         </p>
         
-        {{ $libros->links() }}
+        {{ $libros->links('vendor.pagination.custom') }}
       </div>
     </footer>
   </section>

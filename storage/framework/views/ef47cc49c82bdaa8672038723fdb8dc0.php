@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
 <main class="flex-1">
   <section class="px-4 sm:px-6 lg:px-8 py-6">
@@ -139,7 +137,7 @@
           Mostrando <?php echo e($libros->firstItem() ?? 0); ?> a <?php echo e($libros->lastItem() ?? 0); ?> de <?php echo e($libros->total()); ?> resultados
         </p>
         
-        <?php echo e($libros->links()); ?>
+        <?php echo e($libros->links('vendor.pagination.custom')); ?>
 
       </div>
     </footer>

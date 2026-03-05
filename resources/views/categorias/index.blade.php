@@ -57,6 +57,10 @@
         @endforeach
       </tbody>
     </table>
+  </div>
+  <div class="mt-4">
+    {{ $categorias->links('vendor.pagination.custom') }}
+  </div>
 
     @endsection
 

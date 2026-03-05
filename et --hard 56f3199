@@ -1,0 +1,17 @@
+[33m56f3199[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m4c570aa[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{1}: reset: moving to HEAD~1
+[33mb8ead0d[m HEAD@{2}: commit: TAREA-2-TEMA-2
+[33m4c570aa[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{3}: commit: T2.2 - Editar, eliminar libro y paginación
+[33m56f3199[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{4}: commit: T-2-U-1
+[33m9e1799f[m HEAD@{5}: reset: moving to HEAD
+[33m9e1799f[m HEAD@{6}: commit: editar-eliminar-agregar-categorias
+[33m086aa1b[m HEAD@{7}: commit: ya se puede agregar una categoria
+[33me44d525[m HEAD@{8}: commit: creaciion de tablas categoria y libros
+[33m27f3854[m HEAD@{9}: commit: ya funciono el home
+[33m270402f[m HEAD@{10}: commit: Pagina de home funcionando pero chueca
+[33me786109[m HEAD@{11}: commit: Tarea-2-login y usuario
+[33m2f13c10[m HEAD@{12}: commit: feat: pagina de inicio
+[33m2eac4ec[m HEAD@{13}: Branch: renamed refs/heads/main to refs/heads/main
+[33m2eac4ec[m HEAD@{15}: commit: Install Pest
+[33m566fd18[m HEAD@{16}: Branch: renamed refs/heads/main to refs/heads/main
+[33m566fd18[m HEAD@{18}: commit (initial): Set up a fresh Laravel app

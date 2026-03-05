@@ -15,7 +15,7 @@ class LibrosController extends Controller
 
     public function index()
     {
-        $libros = Libro::with('categoria')->paginate(2); 
+        $libros = Libro::with('categoria')->paginate(5); 
         return view('libros.index', compact('libros'));
     }
 

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
 <div class="container mx-auto px-4 py-8">      
   <h1 class="text-2xl font-bold mb-6">Categorías</h1>
@@ -58,6 +56,11 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>
     </table>
+  </div>
+  <div class="mt-4">
+    <?php echo e($categorias->links('vendor.pagination.custom')); ?>
+
+  </div>
 
     <?php $__env->stopSection(); ?>
 
