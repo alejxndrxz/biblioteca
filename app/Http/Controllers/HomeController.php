@@ -9,8 +9,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $libros = Libro::all(); // Sin paginación en Home
-        
+    $user = auth()->user();
+
+    if ($user->user_type === 'admin') 
+        {
+        $libros = Libro::all(); 
         return view('home.index', compact('libros'));
+    } else {    
+        return view('home.index_user');
     }
+    }
+
+  
 }

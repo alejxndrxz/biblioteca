@@ -74,6 +74,15 @@
             </a>
           </li>
           <li>
+            <a href="<?php echo e(route('usuarios.index')); ?>"
+              class="flex items-center gap-3 px-3 py-2 rounded-xl <?php echo e(request()->routeIs('usuarios.*') ? 'bg-blue-500/20 border border-blue-500/20' : 'hover:bg-white/10'); ?> transition">
+              <span class="opacity-90">👥</span>
+              <span class="font-medium">Usuarios</span>
+            </a>
+          </li>
+
+
+          <li>
             <a href="#prestamos"
               class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition">
               <span class="opacity-90">🔁</span>
@@ -132,6 +141,7 @@
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="<?php echo e(route('home')); ?>">🏠 Inicio</a></li>
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl <?php echo e(request()->routeIs('libros.*') ? 'bg-blue-600 text-white' : 'hover:bg-white/10'); ?> transition" href="<?php echo e(route('libros.index')); ?>">📚 Libros</a></li>
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl <?php echo e(request()->routeIs('categorias.*') ? 'bg-blue-600 text-white' : 'hover:bg-white/10'); ?> transition" href="<?php echo e(route('categorias.index')); ?>">🏷️ Categorías</a></li>
+          <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl <?php echo e(request()->routeIs('usuarios.*') ? 'bg-blue-600 text-white' : 'hover:bg-white/10'); ?> transition" href="<?php echo e(route('usuarios.index')); ?>">👥 Usuarios</a></li>
           <li><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/10 transition" href="#prestamos">🔁 Préstamos</a></li>
           <li class="pt-2"><a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-500/15 transition" href="<?php echo e(route('logout')); ?>">🚪 Salir</a></li>
         </ul>
@@ -170,7 +180,7 @@
             <!-- Center: header menu -->
             <nav class="hidden md:flex items-center gap-2">
               <a href="<?php echo e(route('home')); ?>" class="px-3 py-2 rounded-xl text-sm font-medium <?php echo e(request()->routeIs('home') ? 'bg-blue-600 text-white hover:bg-blue-700' : 'text-slate-700 hover:bg-slate-100'); ?> transition">Inicio</a>
-              <a href="#usuarios" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Usuarios</a>
+              <a href="<?php echo e(route('usuarios.index')); ?>" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Usuarios</a>
               <a href="<?php echo e(route('categorias.index')); ?>" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Categorías</a>
               <a href="<?php echo e(route('libros.index')); ?>" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Libros</a>
               <a href="#prestamos" class="px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 transition">Préstamos</a>

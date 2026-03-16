@@ -27,6 +27,7 @@ $user = \App\Models\User::create([
 'name' => $validatedData['name'],
 'email' => $validatedData['email'],
 'password' => bcrypt($validatedData['password']),
+'user_type' => 'user',
 ]);
 
 # Redirigir o iniciar sesión automáticamente
