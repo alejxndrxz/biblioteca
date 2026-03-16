@@ -52,8 +52,8 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('u
 
 # Rutas para préstamos
 Route::get('/prestamos', [PrestamosController::class, 'index'])->name('prestamos.index');
-
-
+Route::get('/prestamos/create', [PrestamosController::class, 'create'])->name('prestamos.create');
+Route::post('/prestamos/buscar_usuario', [PrestamosController::class, 'buscar_usuarios'])->name('prestamos.buscar_usuario');
 });
 
 
