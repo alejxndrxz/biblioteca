@@ -54,6 +54,8 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('u
 Route::get('/prestamos', [PrestamosController::class, 'index'])->name('prestamos.index');
 Route::get('/prestamos/create', [PrestamosController::class, 'create'])->name('prestamos.create');
 Route::post('/prestamos/buscar_usuario', [PrestamosController::class, 'buscar_usuarios'])->name('prestamos.buscar_usuario');
+Route::post('/prestamos/select_libros', [PrestamosController::class, 'select_libros'])->name('prestamos.select_libros');
+
 });
 
 

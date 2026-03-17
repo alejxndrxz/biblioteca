@@ -40,6 +40,17 @@ class PrestamosController extends Controller
         }
 
     }
+
+    public function select_libros(Request $request)
+    {
+        $usuario_id = $request->input('usuario_id');
+        $usuario = User::findOrFail($usuario_id);
+        $libros = Libro::all();
+
+        return view('prestamos.select_libro', compact('libros', 'usuario'));
+    }
+
+
 }
 
 

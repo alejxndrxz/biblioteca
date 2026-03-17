@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Prestamo extends Model
 {
-    protected $table_name = 'prestamos';
+    protected $table = 'prestamos';
 
 
     public function libro()

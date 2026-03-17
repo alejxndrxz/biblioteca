@@ -43,7 +43,20 @@
             <p><strong>Nombre:</strong> <?php echo e($usuario->name); ?></p>
             <p><strong>Email:</strong> <?php echo e($usuario->email); ?></p>
         </div>
+        
+
+        <form action="<?php echo e(route('prestamos.select_libros')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" name="usuario_id" value="<?php echo e($usuario->id); ?>">
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Seleccionar Libro</button>
+        
+        </form>
+
+
+
+
         <?php endif; ?>
+
     </div>
 </div>
 <?php $__env->stopSection(); ?>
