@@ -45,16 +45,11 @@
         </div>
         
 
-        <form action="<?php echo e(route('prestamos.select_libros')); ?>" method="POST">
+        <form action="<?php echo e(route('prestamos.select_libro')); ?>" method="POST">
             <?php echo csrf_field(); ?>
             <input type="hidden" name="usuario_id" value="<?php echo e($usuario->id); ?>">
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Seleccionar Libro</button>
-        
+            <button type="submit"  value ="Selecionar Libros" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Seleccionar Libro</button>
         </form>
-
-
-
-
         <?php endif; ?>
 
     </div>
