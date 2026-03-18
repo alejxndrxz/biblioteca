@@ -23,7 +23,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Usuario</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Estatus</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha de entrega</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha de entrega</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
@@ -41,7 +41,7 @@
                 <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Entregado</span>
             <?php endif; ?>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e(($prestamo->fecha_entrega) ? $prestamo->fecha_entrega : ''); ?></td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e(($prestamo->fecha_entrega) ? \Carbon\Carbon::parse($prestamo->fecha_entrega)->format('d/m/Y H:i') : ''); ?></td>
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
         <?php if($prestamo->estado == 'pendiente'): ?>
         <a href="<?php echo e(route('prestamos.entregar', $prestamo->id)); ?>" class="text-blue-600 hover:text-blue-900">Entregar</a>

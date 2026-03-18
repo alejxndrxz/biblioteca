@@ -93,7 +93,7 @@ class PrestamosController extends Controller
             try {
         $prestamo = Prestamo::findOrFail($id);
         $prestamo->estado = 'entregado';
-        $prestamo->fecha_entrega = now()->toDateString();
+        $prestamo->fecha_entrega = now();
         $prestamo->save();
 
         $libro = Libro::findOrFail($prestamo->libro_id);
