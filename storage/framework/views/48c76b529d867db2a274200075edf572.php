@@ -22,10 +22,12 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Libro</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Usuario</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Estatus</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha de entrega</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
-</tbody>
+            <tbody>
     <?php $__currentLoopData = $prestamos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prestamo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <tr>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e($prestamo->id); ?></td>
@@ -33,7 +35,18 @@
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e($prestamo->usuario->name); ?></td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e($prestamo->created_at->format('d/m/Y')); ?></td>
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <?php if($prestamo->estado == 'pendiente'): ?>
+                <span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Prestado</span>
+            <?php else: ?>
+                <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Entregado</span>
+            <?php endif; ?>
         </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo e(($prestamo->fecha_entrega) ? $prestamo->fecha_entrega : ''); ?></td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+        <?php if($prestamo->estado == 'pendiente'): ?>
+        <a href="<?php echo e(route('prestamos.entregar', $prestamo->id)); ?>" class="text-blue-600 hover:text-blue-900">Entregar</a>
+    <?php endif; ?>
+    </td>
 </tr>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </tbody>

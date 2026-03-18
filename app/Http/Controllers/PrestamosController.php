@@ -46,7 +46,7 @@ class PrestamosController extends Controller
     {
         $usuario_id = $request->input('usuario_id');
         $usuario = User::findOrFail($usuario_id);
-        $libros = Libro::all();
+        $libros = Libro::where('estatus', 0)->orderBy('id', 'asc')->get();
 
         return view('prestamos.select_libro', compact('usuario', 'libros'));
     }
@@ -84,4 +84,33 @@ class PrestamosController extends Controller
             ->with('success', 'Préstamo creado exitosamente.');
     }
 
-}
+
+
+
+    public function entregar($id)
+    {
+         \DB::beginTransaction();
+            try {
+        $prestamo = Prestamo::findOrFail($id);
+        $prestamo->estado = 'entregado';
+        $prestamo->fecha_entrega = now()->toDateString();
+        $prestamo->save();
+
+        $libro = Libro::findOrFail($prestamo->libro_id);
+        $libro->estatus = 0;
+        $libro->save();
+
+        \DB::commit();
+        }
+        catch (\Exception $e)
+        {
+            \DB::rollBack();
+            return redirect()->route('prestamos.index')
+                ->with('error', 'Error al registrar el préstamo.');
+        }
+
+        return redirect()->route('prestamos.index')
+            ->with('success', 'Libro entregado exitosamente.');
+    }
+    }
+

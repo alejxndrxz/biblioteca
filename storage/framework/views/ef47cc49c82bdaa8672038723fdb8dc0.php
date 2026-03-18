@@ -108,9 +108,15 @@
                 </span>
               </td>
               <td class="px-4 sm:px-6 py-4">
-                <span class="inline-flex items-center rounded-full bg-emerald-600/10 text-emerald-700 px-3 py-1 text-xs font-semibold">
-                  Disponible
-                </span>
+                <?php if($libro->estatus == 1): ?>
+                  <span class="inline-flex items-center rounded-full bg-amber-600/10 text-amber-700 px-3 py-1 text-xs font-semibold">
+                    Prestado
+                  </span>
+                <?php else: ?>
+                  <span class="inline-flex items-center rounded-full bg-emerald-600/10 text-emerald-700 px-3 py-1 text-xs font-semibold">
+                    Disponible
+                  </span>
+                <?php endif; ?>
               </td>
               <td class="px-4 sm:px-6 py-4">
                 <a href="<?php echo e(route('libros.edit', $libro->id)); ?>" 

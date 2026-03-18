@@ -22,10 +22,12 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Libro</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Usuario</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Estatus</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Fecha de entrega</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
-</tbody>
+            <tbody>
     @foreach ($prestamos as $prestamo)
     <tr>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $prestamo->id }}</td>
@@ -33,7 +35,18 @@
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $prestamo->usuario->name }}</td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $prestamo->created_at->format('d/m/Y') }}</td>
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            @if ($prestamo->estado == 'pendiente')
+                <span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">Prestado</span>
+            @else
+                <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">Entregado</span>
+            @endif
         </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ ($prestamo->fecha_entrega) ? $prestamo->fecha_entrega : '' }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+        @if ($prestamo->estado == 'pendiente')
+        <a href="{{ route('prestamos.entregar', $prestamo->id) }}" class="text-blue-600 hover:text-blue-900">Entregar</a>
+    @endif
+    </td>
 </tr>
 @endforeach
 </tbody>
