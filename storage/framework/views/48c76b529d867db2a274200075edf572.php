@@ -6,10 +6,6 @@
         <h1 class="text-2xl font-bold text-slate-800">Prestamos</h1>
         
         
-        
-        
-        
-        
         <a href="<?php echo e(route('prestamos.create')); ?>"  class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
             Crear Prestamo </a>
     </div>

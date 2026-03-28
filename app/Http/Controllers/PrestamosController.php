@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Libro;
 use App\Models\Prestamo;
@@ -67,7 +68,8 @@ class PrestamosController extends Controller
             $prestamo->libro_id = $request->input('libro_id');
             $prestamo->save();
 
-            $libro = Libro::findOrFail($request->input('libro_id'));
+            $libro = Libro::findOrFail
+            ($request->input('libro_id'));
             $libro->estatus = 1;
             $libro->save();
 
@@ -93,7 +95,7 @@ class PrestamosController extends Controller
             try {
         $prestamo = Prestamo::findOrFail($id);
         $prestamo->estado = 'entregado';
-        $prestamo->fecha_entrega = now();
+        $prestamo->fecha_entrega = Carbon::now(config('app.timezone'));
         $prestamo->save();
 
         $libro = Libro::findOrFail($prestamo->libro_id);
