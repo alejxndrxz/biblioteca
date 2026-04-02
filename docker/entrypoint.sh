@@ -8,7 +8,7 @@ php-fpm &
 sleep 3
 
 # Generar key si no existe
-php artisan key:generate --force
+#php artisan key:generate --force
 
 # Migraciones (opcional)
 php artisan migrate --force
